@@ -25,13 +25,66 @@ produces:
 
 paths:
   /talks:
+    post:
+      summary: Add talk to DB
+      description: Results in new talk information added to the DB
+      parameters:      
+        - name: talk
+          in: body
+          description: Talk details
+          schema:
+            description: Talk schema
+            required: [title, talkDescription]
+            properties:
+              title:
+                type: string
+                description: The title of talk
+              talkDescription:
+                type: string
+                description: The description of talk
+      responses:
+        201:
+          description: Created new talk in the database
+          schema:
+            required: [talk-id]
+            properties:
+              talk-id:
+                type: number
+                description: Unique Id for the talk in the system
     get:
       summary: Get a list of talks.
       description: Retrieve a list of talk.
       responses:
         200:
           description: OK
+          
   /speakers:
+    post:
+      summary: Add speaker to DB
+      description: Results in new speaker information added to the DB
+      parameters:      
+        - name: speaker
+          in: body
+          description: Speaker Details
+          schema:
+            description: Speaker schema
+            required: [firstName, lastName]
+            properties:
+              firstName:
+                type: string
+                description: The first name of speaker.
+              lastName:
+                type: string
+                description: The last name of speaker.
+      responses:
+        201:
+          description: Created new speaker in the database
+          schema:
+            required: [speaker-id]
+            properties:
+              speaker-id:
+                type: number
+                description: Unique Id for the speaker in the system
     get:
       summary: Get a list of speakers.
       description: Retrieve a list of speakers.
