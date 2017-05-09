@@ -33,15 +33,7 @@ paths:
           in: body
           description: Talk details
           schema:
-            description: Talk schema
-            required: [title, talkDescription]
-            properties:
-              title:
-                type: string
-                description: The title of talk
-              talkDescription:
-                type: string
-                description: The description of talk
+            $ref: '#/definitions/Talk'
       responses:
         201:
           description: Created new talk in the database
@@ -58,6 +50,29 @@ paths:
         200:
           description: OK
           
+  /talks/{talk-id}:
+    get:
+      summary: Get a talk.
+      description: Retrieve a talk.
+      produces:
+        - application/json
+        - application/xml
+      parameters:
+        - in: path
+          name: talk-id
+          description: ID
+          type: string
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Talk'
+
+# post:
+# put:
+# delete:
+      
   /speakers:
     post:
       summary: Add speaker to DB
@@ -67,15 +82,7 @@ paths:
           in: body
           description: Speaker Details
           schema:
-            description: Speaker schema
-            required: [firstName, lastName]
-            properties:
-              firstName:
-                type: string
-                description: The first name of speaker.
-              lastName:
-                type: string
-                description: The last name of speaker.
+            $ref: '#/definitions/Speaker'
       responses:
         201:
           description: Created new speaker in the database
@@ -91,3 +98,33 @@ paths:
       responses:
         200:
           description: OK
+#  /speakers/{speaker-id}:
+    
+definitions:
+  Talk:
+    description: Talk schema
+    required: [talkTitle, talkDescription]
+    properties:
+      talkTitle:
+        type: string
+        description: The title of talk
+      talkDescription:
+        type: string
+        description: The description of talk
+  TalkId:
+    required: [talk-id]
+    properties:
+      talk-id:
+        type: number
+        description: Unique Id for the talk in the system
+
+  Speaker:
+    description: Speaker schema
+    required: [firstName, lastName]
+    properties:
+      firstName:
+        type: string
+        description: The first name of speaker.
+      lastName:
+        type: string
+        description: The last name of speaker.
