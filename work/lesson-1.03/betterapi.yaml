@@ -23,4 +23,18 @@ consumes:
 produces:
   - application/json
 
-paths: {}
+paths:
+  /talks:
+    get:
+      summary: Get a list of talks.
+      description: Retrieve a list of talk.
+      responses:
+        200:
+          description: OK
+  /speakers:
+    get:
+      summary: Get a list of speakers.
+      description: Retrieve a list of speakers.
+      responses:
+        200:
+          description: OK
