@@ -111,12 +111,12 @@ definitions:
       talkDescription:
         type: string
         description: The description of talk
-  TalkId:
-    required: [talk-id]
-    properties:
-      talk-id:
-        type: number
-        description: Unique Id for the talk in the system
+  # TalkId:
+  #   required: [talk-id]
+  #   properties:
+  #     talk-id:
+  #       type: number
+  #       description: Unique Id for the talk in the system
 
   Speaker:
     description: Speaker schema
